@@ -1,12 +1,12 @@
 import "./App.css";
 import SignUpForm from "./Components/SignUpForm";
-import TodoAppContainer from "./Components/TodoAppContainer";
+import TodoCardsContainer from "./Components/TodoCardsContainer";
+import TodoApp from "./Components/TodoApp";
 
 function App() {
   return (
     <>
-      <SignUpForm />
-      <TodoAppContainer />
+      <TodoApp />
     </>
   );
 }

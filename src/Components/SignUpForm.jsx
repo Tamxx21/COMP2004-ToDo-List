@@ -1,51 +1,62 @@
 import { useState } from "react";
+
 export default function SignUpForm() {
   const [user, setUser] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
   });
 
-  const handleChange = (e) => {
-    setUser({
-      ...user,
-      [e.target.name]: e.target.value,
+  const handleOnChange = (e) => {
+    setUser((prevUser) => {
+      return {
+        ...prevUser,
+        [e.target.name]: e.target.value,
+      };
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleOnSubmit = (e) => {
     e.preventDefault();
     alert(
-      `Name: ${user.name}, Email: ${user.email}, Password: ${user.password}`
+      `Form submitted\nUsername: ${user.username} \nEmail: ${user.email} \nPassword: ${user.password}`
     );
+    setUser({
+      username: "",
+      email: "",
+      password: "",
+    });
   };
 
   return (
     <div>
       <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Name:</label>
+      <form onSubmit={handleOnSubmit}>
+        <label htmlFor="username">Username:</label>
         <input
           type="text"
-          name="name"
-          value={user.name}
-          onChange={handleChange}
+          name="username"
+          id="username"
+          value={user.username}
+          onChange={handleOnChange}
         />
         <br />
-        <label>Email:</label>
+        <label htmlFor="email">Email:</label>
         <input
           type="email"
           name="email"
+          id="email"
           value={user.email}
-          onChange={handleChange}
+          onChange={handleOnChange}
         />
         <br />
-        <label>Password:</label>
+        <label htmlFor="password">Password:</label>
         <input
           type="password"
           name="password"
+          id="password"
           value={user.password}
-          onChange={handleChange}
+          onChange={handleOnChange}
         />
         <br />
         <button type="submit">Sign Up</button>
